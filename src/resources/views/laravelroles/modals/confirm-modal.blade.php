@@ -18,7 +18,7 @@
                 <h5 class="modal-title">
                     Confirm
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>
@@ -26,7 +26,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-outline pull-left float-left" type="button" data-dismiss="modal" >
+                <button class="btn btn-outline pull-left float-left" type="button" data-bs-dismiss="modal" >
                     <i class="fa fa-fw fa-close" aria-hidden="true"></i>
                     {!! trans('laravelroles::laravelroles.modals.btnCancel') !!}
                 </button>

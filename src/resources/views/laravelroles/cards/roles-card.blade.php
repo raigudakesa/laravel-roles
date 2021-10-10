@@ -1,10 +1,12 @@
 <div class="col-sm-6 mb-4 d-flex">
     <div class="card">
         <div class="card-header bg-default">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span id="card_title">
+            <div class="card-title align-items-start flex-column fw-bolder" >
+                <span class="card-label" id="card_title">
                     {!! trans('laravelroles::laravelroles.titles.roles-card') !!}
                 </span>
+            </div>
+            <div class="card-toolbar">
                 <span class="badge badge-pill badge-dark">
                     {!! count($items) !!}
                 </span>
@@ -44,8 +46,8 @@
                                 $indRoleTextClass .= 'default';
                         }
 @endphp
-                        <li id="accordion_roles_{{ $itemKey }}" class="list-group-item accordion @if($item['users']->count() > 0 || $item['permissions']->count() > 0) list-group-item-action accordion-item collapsed @endif" data-toggle="collapse" href="#collapse_roles_{{ $itemKey }}">
-                            <div class="d-flex justify-content-between align-items-center" @if($item['users']->count() > 0 || $item['permissions']->count() > 0) data-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.show-hide") }}" @endif>
+                        <li id="accordion_roles_{{ $itemKey }}" class="list-group-item accordion @if($item['users']->count() > 0 || $item['permissions']->count() > 0) list-group-item-action accordion-item collapsed @endif" data-bs-toggle="collapse" href="#collapse_roles_{{ $itemKey }}">
+                            <div class="d-flex justify-content-between align-items-center" @if($item['users']->count() > 0 || $item['permissions']->count() > 0) data-bs-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.show-hide") }}" @endif>
                                 <span class="badge badge-light role-name">
                                     {!! trans('laravelroles::laravelroles.titles.role-card') !!} <strong class="{{ $indRoleTextClass }}">{{ $item['role']->name }}</strong>
                                 </span>
@@ -68,7 +70,7 @@
                                 </div>
                             </div>
                             @if($item['users']->count() > 0 || $item['permissions']->count() > 0)
-                                <div id="collapse_roles_{{ $itemKey }}" class="collapse" data-parent="#accordion_roles_{{ $itemKey }}" >
+                                <div id="collapse_roles_{{ $itemKey }}" class="collapse" data-bs-parent="#accordion_roles_{{ $itemKey }}" >
 
                                     @if($item['users']->count() > 0)
                                         <table class="table table-striped table-sm mt-3">

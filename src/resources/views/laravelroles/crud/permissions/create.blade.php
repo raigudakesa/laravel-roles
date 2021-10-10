@@ -41,10 +41,16 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-post" id="post_card">
+                    
                     <div class="card-header">
-                        {!! trans('laravelroles::laravelroles.titles.create-permission') !!}
-                        <div class="pull-right">
-                            <a href="{{ route('laravelroles::roles.index') }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-roles') }}">
+                        <div class="card-title align-items-start flex-column" >
+                            <span class="card-label" id="card_title" style="font-size:13px;">
+                                {!! trans('laravelroles::laravelroles.titles.create-permission') !!}
+                            </span>
+                        </div>
+                        
+                        <div class="card-toolbar">
+                            <a href="{{ route('laravelroles::roles.index') }}" class="btn btn-light btn-sm float-right" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-roles') }}">
                                 <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
                                 {!! trans('laravelroles::laravelroles.buttons.back-to-roles') !!}
                             </a>

@@ -1,4 +1,4 @@
-<div class="form-group has-feedback row {{ $errors->has('permissions') ? ' has-error ' : '' }}">
+<div class="mb-5 form-group has-feedback row {{ $errors->has('permissions') ? ' has-error ' : '' }}">
     <label for="permissions" class="col-12 control-label">
         {{ trans("laravelroles::laravelroles.forms.roles-form.role-permissions.label") }}
     </label>

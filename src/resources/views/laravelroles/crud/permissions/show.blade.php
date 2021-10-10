@@ -41,34 +41,36 @@
             <div class="col-md-12 col-lg-10 offset-lg-1">
                 <div class="{{ $containerClass }} {{ $bootstrapCardClasses }}">
                     <div class="{{ $containerHeaderClass }}">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span id="card_title">
+                        
+                        <div class="card-title align-items-start flex-column" >
+                            <span class="card-label" id="card_title" style="font-size:13px;">
                                 @isset($typeDeleted)
                                     {!! trans('laravelroles::laravelroles.titles.show-permission-deleted', ['name' => $item->name]) !!}
                                 @else
                                     {!! trans('laravelroles::laravelroles.titles.show-permission', ['name' => $item['permission']->name]) !!}
                                 @endisset
                             </span>
-                            <div class="pull-right">
-                                @isset($typeDeleted)
-                                    <a href="{{ route('laravelroles::permissions-deleted') }}" class="btn btn-outline-danger btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-permissions-deleted') }}">
-                                        <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
-                                        {!! trans('laravelroles::laravelroles.buttons.back-to-permissions-deleted') !!}
-                                    </a>
-                                @else
-                                    <a href="{{ route('laravelroles::roles.index') }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-permissions') }}">
-                                        <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
-                                        {!! trans('laravelroles::laravelroles.buttons.back-to-permissions') !!}
-                                    </a>
-                                @endisset
-                            </div>
+                        </div>
+                        
+                        <div class="card-toolbar">
+                            @isset($typeDeleted)
+                                <a href="{{ route('laravelroles::permissions-deleted') }}" class="btn btn-outline btn-outline-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-permissions-deleted') }}">
+                                    <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
+                                    {!! trans('laravelroles::laravelroles.buttons.back-to-permissions-deleted') !!}
+                                </a>
+                            @else
+                                <a href="{{ route('laravelroles::roles.index') }}" class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-permissions') }}">
+                                    <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
+                                    {!! trans('laravelroles::laravelroles.buttons.back-to-permissions') !!}
+                                </a>
+                            @endisset
                         </div>
                     </div>
                     <div class="{{ $containerBodyClass }}">
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-id') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge badge-pill text-black">
                                     @isset($typeDeleted)
                                         {{ $item->id }}
                                     @else
@@ -78,7 +80,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-name') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge badge-pill text-black">
                                     @isset($typeDeleted)
                                         {{ $item->name }}
                                     @else
@@ -88,7 +90,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-slug') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge badge-pill text-black">
                                     @isset($typeDeleted)
                                         {{ $item->slug }}
                                     @else
@@ -98,7 +100,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-model') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge badge-pill text-black">
                                     @isset($typeDeleted)
                                         {{ $item->model }}
                                     @else
@@ -108,7 +110,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-desc') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge badge-pill text-black">
                                     @isset($typeDeleted)
                                         @if($item->desc)
                                             {{ $item->desc }}
@@ -162,8 +164,8 @@
                                     @endif
                                 @endisset
                             </li>
-                            <li id="accordion_roles_users" class="list-group-item accordion @if($item['users']->count() > 0) list-group-item-action accordion-item collapsed @endif" data-toggle="collapse" href="#collapse_roles_users">
-                                <div class="d-flex justify-content-between align-items-center" @if($item['users']->count() > 0) data-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.show-hide") }}" @endif>
+                            <li id="accordion_roles_users" class="list-group-item accordion @if($item['users']->count() > 0) list-group-item-action accordion-item collapsed @endif" data-bs-toggle="collapse" href="#collapse_roles_users">
+                                <div class="d-flex justify-content-between align-items-center" @if($item['users']->count() > 0) data-bs-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.show-hide") }}" @endif>
                                     {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-users') !!}
                                     <span class="badge badge-pill badge-dark">
                                         @if($item['users']->count() > 0)
@@ -174,7 +176,7 @@
                                     </span>
                                 </div>
                                 @if($item['users']->count() > 0)
-                                    <div id="collapse_roles_users" class="collapse" data-parent="#accordion_roles_users" >
+                                    <div id="collapse_roles_users" class="collapse" data-bs-parent="#accordion_roles_users" >
                                         <table class="table table-striped table-sm mt-3">
                                             <caption>
                                                 @isset($typeDeleted)
@@ -213,7 +215,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.created') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge badge-pill text-black">
                                     @isset($typeDeleted)
                                         {!! $item->created_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                     @else
@@ -223,7 +225,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.updated') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge badge-pill text-black">
                                     @isset($typeDeleted)
                                         {!! $item->updated_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                     @else
@@ -234,7 +236,7 @@
                             @isset($typeDeleted)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {!! trans('laravelroles::laravelroles.cards.role-info-card.deleted') !!}
-                                    <span class="badge badge-pill">
+                                    <span class="badge badge-pill text-black">
                                         {!! $item->deleted_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                     </span>
                                 </li>
@@ -245,7 +247,7 @@
                                 @isset($typeDeleted)
                                     @include('laravelroles::laravelroles.forms.restore-item', ['style' => 'large', 'type' => 'permission', 'item' => $item])
                                 @else
-                                    <a class="btn btn-sm btn-secondary btn-block text-white mb-0" href="{{ route('laravelroles::permissions.edit', $item['permission']->id) }}" data-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.edit-permission") }}">
+                                    <a class="btn btn-sm btn-secondary btn-block text-white mb-0" href="{{ route('laravelroles::permissions.edit', $item['permission']->id) }}" data-bs-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.edit-permission") }}">
                                         {!! trans("laravelroles::laravelroles.buttons.edit-larger") !!}
                                     </a>
                                 @endisset

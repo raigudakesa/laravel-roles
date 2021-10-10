@@ -1,4 +1,4 @@
-<div class="form-group has-feedback row {{ $errors->has('slug') ? ' has-error ' : '' }}">
+<div class="mb-5 form-group has-feedback row {{ $errors->has('slug') ? ' has-error ' : '' }}">
     <label for="slug" class="col-12 control-label">
         {{ trans("laravelroles::laravelroles.forms.roles-form.role-slug.label") }}
     </label>

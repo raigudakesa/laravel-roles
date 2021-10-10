@@ -40,10 +40,10 @@
 
 @endphp
 
-<form action="{{ $formAction }}" method="POST" accept-charset="utf-8" data-toggle="tooltip" title="{{ $btnTooltip }}" class="{{ $formClass }}" >
+<form action="{{ $formAction }}" method="POST" accept-charset="utf-8" data-bs-toggle="tooltip" title="{{ $btnTooltip }}" class="{{ $formClass }}" >
     {{ csrf_field() }}
     {{ method_field('PUT') }}
-    <button class="btn btn-block {{ $btnClass }}" type="button" style="width: 100%;" data-toggle="modal" data-target="{{ $dataTarget }}" data-title="{!! $modalTitle !!}" data-message="{!! $modalMessage !!}" >
+    <button class="btn btn-block {{ $btnClass }}" type="button" style="width: 100%;" data-bs-toggle="modal" data-bs-target="{{ $dataTarget }}" data-bs-title="{!! $modalTitle !!}" data-bs-message="{!! $modalMessage !!}" >
         {!! $btnText !!}
         <i class="fa fa-fw fa-history" aria-hidden="true"></i>
     </button>

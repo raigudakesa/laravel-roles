@@ -41,46 +41,48 @@
             <div class="col-md-12 col-lg-10 offset-lg-1">
                 <div class="{{ $containerClass }} {{ $bootstrapCardClasses }}">
                     <div class="{{ $containerHeaderClass }}">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span id="card_title">
+                        
+                        <div class="card-title align-items-start flex-column" >
+                            <span class="card-label" id="card_title" style="font-size:13px;">
                                 @isset($typeDeleted)
                                     {!! trans('laravelroles::laravelroles.titles.show-role-deleted', ['name' => $item->name]) !!}
                                 @else
                                     {!! trans('laravelroles::laravelroles.titles.show-role', ['name' => $item->name]) !!}
                                 @endisset
                             </span>
-                            <div class="pull-right">
-                                @isset($typeDeleted)
-                                    <a href="{{ route('laravelroles::roles-deleted') }}" class="btn btn-outline-danger btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-roles-deleted') }}">
-                                        <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
-                                        {!! trans('laravelroles::laravelroles.buttons.back-to-roles-deleted') !!}
-                                    </a>
-                                @else
-                                    <a href="{{ route('laravelroles::roles.index') }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-roles') }}">
-                                        <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
-                                        {!! trans('laravelroles::laravelroles.buttons.back-to-roles') !!}
-                                    </a>
-                                @endisset
-                            </div>
+                        </div>
+                        
+                        <div class="card-toolbar">
+                            @isset($typeDeleted)
+                                <a href="{{ route('laravelroles::roles-deleted') }}" class="btn btn-outline btn-outline-danger btn-sm float-right" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-roles-deleted') }}">
+                                    <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
+                                    {!! trans('laravelroles::laravelroles.buttons.back-to-roles-deleted') !!}
+                                </a>
+                            @else
+                                <a href="{{ route('laravelroles::roles.index') }}" class="btn btn-light btn-sm float-right" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ trans('laravelroles::laravelroles.tooltips.back-roles') }}">
+                                    <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
+                                    {!! trans('laravelroles::laravelroles.buttons.back-to-roles') !!}
+                                </a>
+                            @endisset
                         </div>
                     </div>
                     <div class="{{ $containerBodyClass }}">
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-id') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge text-black">
                                     {{ $item->id }}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-name') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge text-black">
                                     {{ $item->name }}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-desc') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge text-black">
                                     @if($item->desc)
                                         {{ $item->desc }}
                                     @else
@@ -92,7 +94,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-level') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge text-black">
                                     @if($item->level)
                                         {{ $item->level }}
                                     @else
@@ -107,7 +109,7 @@
                                 @if($item['permissions']->count() > 0)
                                     <div>
                                         @foreach($item['permissions'] as $itemUserKey => $itemValue)
-                                            <span class="badge badge-pill badge-primary float-right">
+                                            <span class="badge badge-pill badge-primary float-right mb-1">
                                                 {{ $itemValue->name }}
                                             </span>
                                             <br />
@@ -119,8 +121,8 @@
                                     </span>
                                 @endif
                             </li>
-                            <li id="accordion_roles_users" class="list-group-item accordion @if($item['users']->count() > 0) list-group-item-action accordion-item collapsed @endif" data-toggle="collapse" href="#collapse_roles_users">
-                                <div class="d-flex justify-content-between align-items-center" @if($item['users']->count() > 0) data-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.show-hide") }}" @endif>
+                            <li id="accordion_roles_users" class="list-group-item accordion @if($item['users']->count() > 0) list-group-item-action accordion-item collapsed @endif" data-bs-toggle="collapse" href="#collapse_roles_users">
+                                <div class="d-flex justify-content-between align-items-center" @if($item['users']->count() > 0) data-bs-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.show-hide") }}" @endif>
                                     {!! trans('laravelroles::laravelroles.cards.role-info-card.role-users') !!}
                                     <span class="badge badge-pill badge-dark">
                                         @if($item['users']->count() > 0)
@@ -131,7 +133,7 @@
                                     </span>
                                 </div>
                                 @if($item['users']->count() > 0)
-                                    <div id="collapse_roles_users" class="collapse" data-parent="#accordion_roles_users" >
+                                    <div id="collapse_roles_users" class="collapse" data-bs-parent="#accordion_roles_users" >
                                         <table class="table table-striped table-sm mt-3">
                                             <caption>
                                                 {!! trans('laravelroles::laravelroles.cards.role-card.table-users-caption', ['role' => $item->name]) !!}
@@ -164,8 +166,8 @@
                                     </div>
                                 @endif
                             </li>
-                            <li id="accordion_roles_permissions" class="list-group-item accordion @if($item['permissions']->count() > 0) list-group-item-action accordion-item collapsed @endif" data-toggle="collapse" href="#collapse_roles_permissions">
-                                <div class="d-flex justify-content-between align-items-center" @if($item['permissions']->count() > 0) data-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.show-hide") }}" @endif>
+                            <li id="accordion_roles_permissions" class="list-group-item accordion @if($item['permissions']->count() > 0) list-group-item-action accordion-item collapsed @endif" data-bs-toggle="collapse" href="#collapse_roles_permissions">
+                                <div class="d-flex justify-content-between align-items-center" @if($item['permissions']->count() > 0) data-bs-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.show-hide") }}" @endif>
                                     {!! trans('laravelroles::laravelroles.cards.role-info-card.role-permissions') !!}
                                     <span class="badge badge-pill badge-dark">
                                         @if($item['permissions']->count() > 0)
@@ -176,7 +178,7 @@
                                     </span>
                                 </div>
                                 @if($item['permissions']->count() > 0)
-                                    <div id="collapse_roles_permissions" class="collapse" data-parent="#accordion_roles_permissions" >
+                                    <div id="collapse_roles_permissions" class="collapse" data-bs-parent="#accordion_roles_permissions" >
                                         <table class="table table-striped table-sm mt-3">
                                             <caption>
                                                 {!! trans('laravelroles::laravelroles.cards.role-card.table-permissions-caption', ['role' => $item->name]) !!}
@@ -201,20 +203,20 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.created') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge text-black">
                                     {!! $item->created_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.updated') !!}
-                                <span class="badge badge-pill">
+                                <span class="badge text-black">
                                     {!! $item->updated_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                 </span>
                             </li>
                             @if ($item->deleted_at)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {!! trans('laravelroles::laravelroles.cards.role-info-card.deleted') !!}
-                                    <span class="badge badge-pill">
+                                    <span class="badge badge-pill text-black">
                                         {!! $item->deleted_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                     </span>
                                 </li>
@@ -225,9 +227,11 @@
                                 @isset($typeDeleted)
                                     @include('laravelroles::laravelroles.forms.restore-item', ['style' => 'large', 'type' => 'role', 'item' => $item])
                                 @else
-                                    <a class="btn btn-sm btn-secondary btn-block text-white mb-0" href="{{ route('laravelroles::roles.edit', $item->id) }}" data-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.edit-role") }}">
-                                        {!! trans("laravelroles::laravelroles.buttons.edit-larger") !!}
-                                    </a>
+                                    <div class="d-grid">
+                                        <a class="btn btn-sm btn-primary btn-block text-white mb-0" href="{{ route('laravelroles::roles.edit', $item->id) }}" data-bs-toggle="tooltip" title="{{ trans("laravelroles::laravelroles.tooltips.edit-role") }}">
+                                            {!! trans("laravelroles::laravelroles.buttons.edit-larger") !!}
+                                        </a>
+                                    </div>
                                 @endisset
                             </div>
                             <div class="col-sm-6 mt-3">

@@ -1,4 +1,4 @@
-<div class="table-responsive permissions-table">
+<div class="table-responsive permissions-table px-1">
     <table class="table table-sm table-striped data-table permissions-table">
         <caption class="p-1 pb-0">
             @if($tabletype == 'normal')
@@ -128,12 +128,12 @@
                         @endif
                         @if($tabletype == 'normal')
                             <td>
-                                <a class="btn btn-sm btn-outline-info btn-block" href="{{ route('laravelroles::permissions.show', $item['permission']->id) }}" data-toggle="tooltip" title="{{ trans('laravelroles::laravelroles.tooltips.show-permission') }}">
+                                <a class="btn btn-outline btn-sm btn-outline-info btn-block" href="{{ route('laravelroles::permissions.show', $item['permission']->id) }}" data-bs-toggle="tooltip" title="{{ trans('laravelroles::laravelroles.tooltips.show-permission') }}">
                                     {!! trans("laravelroles::laravelroles.buttons.show") !!}
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-outline-secondary btn-block" href="{{ route('laravelroles::permissions.edit', $item['permission']->id) }}" data-toggle="tooltip" title="{{ trans('laravelroles::laravelroles.tooltips.edit-permission') }}">
+                                <a class="btn btn-outline btn-sm btn-outline-secondary btn-block" href="{{ route('laravelroles::permissions.edit', $item['permission']->id) }}" data-bs-toggle="tooltip" title="{{ trans('laravelroles::laravelroles.tooltips.edit-permission') }}">
                                     {!! trans("laravelroles::laravelroles.buttons.edit") !!}
                                 </a>
                             </td>
@@ -145,7 +145,7 @@
 
 
                             <td>
-                                <a class="btn btn-sm btn-outline-info btn-block" href="{{ route('laravelroles::permission-show-deleted', $item->id) }}" data-toggle="tooltip" title="{{ trans('laravelroles::laravelroles.tooltips.show-deleted-permission') }}">
+                                <a class="btn btn-outline btn-sm btn-outline-info btn-block" href="{{ route('laravelroles::permission-show-deleted', $item->id) }}" data-bs-toggle="tooltip" title="{{ trans('laravelroles::laravelroles.tooltips.show-deleted-permission') }}">
                                     {!! trans("laravelroles::laravelroles.buttons.show-deleted-permission") !!}
                                     <i class="fa fa-eye fa-fw" aria-hidden="true"></i>
                                 </a>
