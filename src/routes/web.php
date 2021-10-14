@@ -6,6 +6,7 @@
 |--------------------------------------------------------------------------
 |
 */
+/*
 Route::group([
     'middleware'    => ['web'],
     'as'            => 'laravelroles::',
@@ -32,3 +33,4 @@ Route::group([
     Route::delete('permissions-deleted-destroy-all', 'LaravelpermissionsDeletedController@destroyAllDeletedPermissions')->name('destroy-all-deleted-permissions');
     Route::delete('permission-destroy/{id}', 'LaravelpermissionsDeletedController@destroy')->name('permission-item-destroy');
 });
+*/

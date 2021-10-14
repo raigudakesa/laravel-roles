@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 |
 */
-
+/*
 Route::group([
     'middleware'    => ['auth:api'],
     'as'            => 'laravelroles::',
@@ -15,3 +15,4 @@ Route::group([
 ], function () {
     Route::apiResource('roles-api', 'LaravelRolesApiController');
 });
+*/
